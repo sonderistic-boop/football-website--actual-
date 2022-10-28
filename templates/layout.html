@@ -19,6 +19,16 @@ will be using bootstrap css to make code look nice -->
 <body>
   <!-- container gives the content good spacing-->
     <div class = "container">
+      {% with messages = get_flashed_messages(with_categories=true)%}
+        {%if messages %}
+          {% for category, message in messages%}
+            <div class = "alert alert - {{category}}">
+              {{message}}
+            </div>
+          {%endfor%}
+        {%endif%}
+
+      {%endwith%}
     {%block content%}{% endblock %}
     </div>
     <!-- Optional JavaScript -->
